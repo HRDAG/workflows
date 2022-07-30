@@ -1,4 +1,4 @@
-name: Check makefiles
+name: Run pre-commit
 
 on:
   workflow_call:
@@ -6,8 +6,8 @@ on:
     secrets: {}
 
 jobs:
-    check-makefile-workflow:
-      name: Check makefile
+    run-pre-commit:
+      name: Run pre-commit
       runs-on: ubuntu-latest
       steps:
         - run: echo Hello workflow

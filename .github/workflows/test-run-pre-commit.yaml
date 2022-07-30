@@ -1,4 +1,4 @@
-name: Check makefiles
+name: Test run pre-commit
 
 on:
   push: {}
@@ -14,6 +14,6 @@ jobs:
             repository: HRDAG/workflows
             ref: ${{ github.ref }}
 
-    test-check-workflow:
-      uses: ./.github/workflows/makefile-check.yaml
+    test-run-precommit:
+      uses: ./.github/workflows/run-pre-commit.yaml
       needs: checkout-self
