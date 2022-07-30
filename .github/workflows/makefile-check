@@ -1,0 +1,9 @@
+name: Check makefiles
+
+on:
+  workflow_call:
+    inputs: {}
+    secrets: {}
+
+jobs:
+    check-workflow: []
