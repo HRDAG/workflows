@@ -5,4 +5,6 @@ on:
 
 jobs:
     test-check-workflow:
-      uses: "HRDAG/workflows/.github/workflows/makefile-check.yaml@${{ github.ref }}"
+      uses: ${{ env.workflow }}
+      env:
+        workflow: HRDAG/workflows/.github/workflows/makefile-check.yaml@${{ github.ref }}
