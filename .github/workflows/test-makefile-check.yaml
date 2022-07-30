@@ -6,6 +6,4 @@ on:
 
 jobs:
     test-check-workflow:
-      name: Test check makefile workflow
-      runs-on: ubuntu-latest
       uses: HRDAG/workflows/.github/workflows/makefile-check.yaml@test-workflow
