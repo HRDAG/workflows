@@ -6,4 +6,4 @@ on:
 jobs:
 
   run-pre-commit:
-    uses: HRADAG/workflows/.github/workflows/run-pre-commit.yaml@main
+    uses: HRDAG/workflows/.github/workflows/run-pre-commit.yaml@main
