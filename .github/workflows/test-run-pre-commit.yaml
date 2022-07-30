@@ -16,4 +16,6 @@ jobs:
 
     test-run-precommit:
       uses: ./.github/workflows/run-pre-commit.yaml
+      with:
+        target_path: tests/successful
       needs: checkout-self
