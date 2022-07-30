@@ -2,7 +2,11 @@ name: Run pre-commit
 
 on:
   workflow_call:
-    inputs: {}
+    inputs:
+      target_path:
+        required: false
+        type: string
+        default: ""
     secrets: {}
 
 jobs:
@@ -10,4 +14,18 @@ jobs:
       name: Run pre-commit
       runs-on: ubuntu-latest
       steps:
-        - run: echo Hello workflow
+        - name: Install pre-commit
+          run: pipx install pre-commit
+
+        - name: Checkout source
+          uses: actions/checkout@v3
+          with:
+            repository: ${{ github.repository }}
+            ref: ${{ github.ref }}
+
+        - name: Change to target path
+          if: ${{ inputs.target_path != '' }}
+          run: cd ${{ inputs.target_path }}
+
+        - name: Install git-hooks
+          run: pre-commit run -a

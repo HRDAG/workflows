@@ -1,0 +1,9 @@
+name: Post push checks
+
+on:
+  push: {}
+
+jobs:
+
+  run-pre-commit:
+    uses: HRDAG/workflows/.github/workflows/run-pre-commit.yaml@main
