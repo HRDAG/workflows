@@ -4,8 +4,8 @@ on:
   push: {}
 
 jobs:
-    tag-test:
-      name: Tag test
+    checkout-self:
+      name: Checkout self
       runs-on: ubuntu-latest
       steps:
         - name: Checkout local repo
@@ -14,25 +14,6 @@ jobs:
             repository: HRDAG/workflows
             ref: ${{ github.ref }}
 
-        - name: Set test tag
-          run: git tag -f test-target
-
-        - name: Push test tag
-          run: git push -f -u origin test-tag
-
     test-check-workflow:
-      uses: HRDAG/workflows/.github/workflows/makefile-check.yaml@test-target
-      needs: tag-test
-
-#    untag-test:
-#      name: Untag test
-#      runs-on: ubuntu-latest
-#      needs: test-check-workflow
-#      steps:
-#        - name: Checkout local repo
-#          uses: github/checkout@v3
-#          with:
-#            repository: HRDAG/workflows
-#
-#        - name: Push null tag
-#          run: git push -f -u origin :test-tag
+      uses: .github/workflows/makefile-check.yaml
+      needs: checkout-self
