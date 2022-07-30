@@ -5,4 +5,4 @@ on:
 
 jobs:
     test-check-workflow:
-      uses: HRDAG/workflows/.github/workflows/makefile-check.yaml@test-workflow
+      uses: HRDAG/workflows/.github/workflows/makefile-check.yaml@{{ github.action_ref }}
