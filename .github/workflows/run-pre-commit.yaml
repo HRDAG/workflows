@@ -24,7 +24,7 @@ jobs:
             ref: ${{ github.ref }}
 
         - name: Change to target path
-          if: ${{ inputs.target_path != "" }}
+          if: ${{ inputs.target_path != '' }}
           run: cd ${{ inputs.target_path }}
 
         - name: Install git-hooks
