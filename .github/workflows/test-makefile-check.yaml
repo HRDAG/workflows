@@ -1,0 +1,12 @@
+name: Check makefiles
+
+on:
+  push:
+    branches: test-workflow
+
+jobs:
+    test-check-workflow:
+      name: Test check makefile workflow
+      runs-on: ubuntu-latest
+      steps:
+        - uses: git@github.com:HRDAG/workflows.git/.github/workflows/makefile-check.yaml@test-workflow
