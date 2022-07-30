@@ -1,0 +1,13 @@
+name: Check makefiles
+
+on:
+  workflow_call:
+    inputs: {}
+    secrets: {}
+
+jobs:
+    check-makefile-workflow:
+      name: Check makefile
+      runs-on: ubuntu-latest
+      steps:
+        - run: echo Hello workflow

@@ -1,0 +1,19 @@
+name: Check makefiles
+
+on:
+  push: {}
+
+jobs:
+    checkout-self:
+      name: Checkout self
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout local repo
+          uses: actions/checkout@v3
+          with:
+            repository: HRDAG/workflows
+            ref: ${{ github.ref }}
+
+    test-check-workflow:
+      uses: ./.github/workflows/makefile-check.yaml
+      needs: checkout-self
