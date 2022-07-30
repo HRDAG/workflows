@@ -9,7 +9,7 @@ jobs:
       runs-on: ubuntu-latest
       steps:
         - name: Checkout local repo
-          uses: github/checkout@v3
+          uses: actions/checkout@v3
           with:
             repository: HRDAG/workflows
             ref: ${{ github.ref }}
