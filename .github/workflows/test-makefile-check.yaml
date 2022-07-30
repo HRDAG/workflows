@@ -15,5 +15,5 @@ jobs:
             ref: ${{ github.ref }}
 
     test-check-workflow:
-      uses: .github/workflows/makefile-check.yaml
+      uses: ./.github/workflows/makefile-check.yaml
       needs: checkout-self
