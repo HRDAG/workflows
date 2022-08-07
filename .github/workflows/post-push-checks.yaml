@@ -7,3 +7,5 @@ jobs:
 
   run-pre-commit:
     uses: HRDAG/workflows/.github/workflows/run-pre-commit.yaml@main
+    with:
+      setup_workflow: HRDAG/workflows/.github/workflows/setup-poetry.yaml@main

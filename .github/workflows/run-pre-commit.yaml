@@ -7,6 +7,14 @@ on:
         required: false
         type: string
         default: ""
+      setup_workflow:
+        required: false
+        type: string
+        default: ""
+      python_version:
+        required: false
+        type: string
+        default: "3.8"
     secrets: {}
 
 jobs:
@@ -14,18 +22,8 @@ jobs:
       name: Run pre-commit
       runs-on: ubuntu-latest
       steps:
-
-        - uses: actions/setup-python@v3
-          with:
-            python-version: "3.8"
-            architecture: x64
-            cache: poetry
-
         - name: Install pre-commit
           run: pipx install pre-commit
-
-        - name: Install pre-commit
-          run: pipx install --python python3.8 poetry
 
         - name: Checkout source
           uses: actions/checkout@v3
@@ -33,9 +31,15 @@ jobs:
             repository: ${{ github.repository }}
             ref: ${{ github.ref }}
 
+        - name: Setup workflow
+          if: ${{ inputs.setup_workflow != '' }}
+          uses: ${{ inputs.setup_workflow }}
+          with:
+            python_version: ${{ inputs.python_version }}
+
         - name: Change to target path
           if: ${{ inputs.target_path != '' }}
           run: cd ${{ inputs.target_path }}
 
-        - name: Install git-hooks
+        - name: Run pre-commit checks
           run: pre-commit run -a
