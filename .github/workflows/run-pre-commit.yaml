@@ -7,6 +7,10 @@ on:
         required: false
         type: string
         default: ""
+      python_version:
+        required: false
+        type: string
+        default: "3.9"
     secrets: {}
 
 jobs:
@@ -17,18 +21,28 @@ jobs:
         - name: Install pre-commit
           run: pipx install pre-commit
 
-        - name: Install pre-commit
-          run: pipx install poetry
-
         - name: Checkout source
           uses: actions/checkout@v3
           with:
             repository: ${{ github.repository }}
             ref: ${{ github.ref }}
 
+        - uses: actions/setup-python@v3
+          with:
+            python-version: ${{ inputs.python_version }}
+            architecture: x64
+
+        - name: Install poetry
+          if: ${{ hashFiles('poetry.lock') != '' }}
+          run: pipx install poetry
+
+        - name: Install poetry dependencies
+          if: ${{ hashFiles('poetry.lock') != '' }}
+          run: poetry install
+
         - name: Change to target path
           if: ${{ inputs.target_path != '' }}
           run: cd ${{ inputs.target_path }}
 
-        - name: Install git-hooks
+        - name: Run pre-commit checks
           run: pre-commit run -a
