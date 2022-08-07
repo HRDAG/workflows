@@ -14,11 +14,18 @@ jobs:
       name: Run pre-commit
       runs-on: ubuntu-latest
       steps:
+
+        - uses: actions/setup-python@v3
+          with:
+            python-version: "3.8"
+            architecture: x64
+            cache: poetry
+
         - name: Install pre-commit
           run: pipx install pre-commit
 
         - name: Install pre-commit
-          run: pipx install poetry
+          run: pipx install --python python3.8 poetry
 
         - name: Checkout source
           uses: actions/checkout@v3
