@@ -10,9 +10,7 @@ DEFAULT_EXEMPT_LIST = [
 ]
 
 
-def check_makefiles_in(
-    path: pathlib.Path, exemptions: set[pathlib.Path]
-) -> list[pathlib.Path]:
+def check_makefiles_in(path, exemptions):
     problem_paths = []
 
     if path not in exemptions:

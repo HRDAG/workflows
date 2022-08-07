@@ -4,7 +4,7 @@ from hrdag.precommit import shell
 
 
 @pytest.fixture
-def project_structure() -> dict:
+def project_structure():
     return {
         ".git": {},
         "a": "a-file",

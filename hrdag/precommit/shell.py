@@ -2,7 +2,7 @@ import pathlib
 import sys
 
 
-def find_in(path: pathlib.Path, name: str):
+def find_in(path, name: str):
     for child in path.iterdir():
         if child.name == name:
             return child
