@@ -8,3 +8,6 @@ cmake-build-*/
 
 # File-based project format
 *.iws
+
+# Python
+__pycache__/
