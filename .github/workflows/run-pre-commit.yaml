@@ -34,7 +34,7 @@ jobs:
             cache: poetry
 
         - name: Install pre-commit
-          if: ${{ hashFiles("poetry.lock") != "" }}
+          if: ${{ hashFiles('poetry.lock') != '' }}
           run: pipx install --python ${{ inputs.python_version }} poetry
 
         - name: Change to target path

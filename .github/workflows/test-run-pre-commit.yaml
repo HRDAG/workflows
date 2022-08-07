@@ -18,5 +18,4 @@ jobs:
       uses: ./.github/workflows/run-pre-commit.yaml
       with:
         target_path: tests/successful
-        setup_workflow: ./.github/workflows/setup-poetry.yaml
       needs: checkout-self
