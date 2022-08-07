@@ -7,10 +7,6 @@ on:
         required: false
         type: string
         default: ""
-      setup_workflow:
-        required: false
-        type: string
-        default: ""
       python_version:
         required: false
         type: string
