@@ -21,6 +21,10 @@ jobs:
         - name: Install pre-commit
           run: pipx install pre-commit
 
+        - name: Install poetry
+          if: ${{ hashFiles('poetry.lock') != '' }}
+          run: pipx install poetry
+
         - name: Checkout source
           uses: actions/checkout@v3
           with:
@@ -32,10 +36,6 @@ jobs:
             python-version: ${{ inputs.python_version }}
             architecture: x64
             cache: poetry
-
-        - name: Install pre-commit
-          if: ${{ hashFiles('poetry.lock') != '' }}
-          run: pipx install --python ${{ inputs.python_version }} poetry
 
         - name: Change to target path
           if: ${{ inputs.target_path != '' }}
