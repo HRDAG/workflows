@@ -36,6 +36,10 @@ jobs:
           if: ${{ hashFiles('poetry.lock') != '' }}
           run: pipx install poetry
 
+        - name: Install poetry dependencies
+          if: ${{ hashFiles('poetry.lock') != '' }}
+          run: poetry install
+
         - name: Change to target path
           if: ${{ inputs.target_path != '' }}
           run: cd ${{ inputs.target_path }}
