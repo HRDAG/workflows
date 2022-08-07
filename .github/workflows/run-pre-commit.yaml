@@ -31,11 +31,15 @@ jobs:
             repository: ${{ github.repository }}
             ref: ${{ github.ref }}
 
-        - name: Setup workflow
-          if: ${{ inputs.setup_workflow != '' }}
-          uses: ${{ inputs.setup_workflow }}
+        - uses: actions/setup-python@v3
           with:
-            python_version: ${{ inputs.python_version }}
+            python-version: ${{ inputs.python_version }}
+            architecture: x64
+            cache: poetry
+
+        - name: Install pre-commit
+          if: ${{ hashFiles("poetry.lock") != "" }}
+          run: pipx install --python ${{ inputs.python_version }} poetry
 
         - name: Change to target path
           if: ${{ inputs.target_path != '' }}
